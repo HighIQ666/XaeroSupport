@@ -1,8 +1,8 @@
-package host.plas.exampleproject.events.own;
+package gg.drak.xaerosupport.events.own;
 
 import gg.drak.thebase.events.components.BaseEvent;
 import host.plas.bou.BukkitOfUtils;
-import host.plas.exampleproject.ExampleProject;
+import gg.drak.xaerosupport.XaeroSupport;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,8 +12,8 @@ public class OwnEvent extends BaseEvent {
         super();
     }
 
-    public ExampleProject getPlugin() {
-        return ExampleProject.getInstance();
+    public XaeroSupport getPlugin() {
+        return XaeroSupport.getInstance();
     }
 
     public BukkitOfUtils getBou() {
