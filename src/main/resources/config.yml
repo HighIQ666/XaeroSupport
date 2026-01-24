@@ -2,7 +2,8 @@
 ids:
   # The Server ID.
   # Use this to allow players to use the same minimap on this server or network.
-  server: 10000
+  # Set to 0 to regenerate a new ID.
+  server: 0
 
 # Channel configurations.
 channels:
