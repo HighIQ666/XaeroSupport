@@ -13,6 +13,6 @@ public class AbstractConglomerate implements ListenerConglomerate {
     public void register() {
         Bukkit.getPluginManager().registerEvents(this, XaeroSupport.getInstance());
         BaseEventHandler.bake(this, XaeroSupport.getInstance());
-        XaeroSupport.getInstance().logInfo("Registered listeners for: &c" + this.getClass().getSimpleName());
+        XaeroSupport.getInstance().logInfo("Registered listeners for: " + this.getClass().getSimpleName());
     }
 }

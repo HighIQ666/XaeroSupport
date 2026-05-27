@@ -4,21 +4,39 @@ import gg.drak.xaerosupport.utils.XaeroUtils;
 import host.plas.bou.BetterPlugin;
 import gg.drak.xaerosupport.config.MainConfig;
 import gg.drak.xaerosupport.events.MainListener;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter @Setter
 public final class XaeroSupport extends BetterPlugin {
-    @Getter @Setter
     private static XaeroSupport instance;
-    @Getter @Setter
     private static MainConfig mainConfig;
 
-    @Getter @Setter
     private static MainListener mainListener;
 
     public XaeroSupport() {
         super();
+    }
+
+    public static XaeroSupport getInstance() {
+        return instance;
+    }
+
+    public static void setInstance(XaeroSupport instance) {
+        XaeroSupport.instance = instance;
+    }
+
+    public static MainConfig getMainConfig() {
+        return mainConfig;
+    }
+
+    public static void setMainConfig(MainConfig mainConfig) {
+        XaeroSupport.mainConfig = mainConfig;
+    }
+
+    public static MainListener getMainListener() {
+        return mainListener;
+    }
+
+    public static void setMainListener(MainListener mainListener) {
+        XaeroSupport.mainListener = mainListener;
     }
 
     public void onDisable() {

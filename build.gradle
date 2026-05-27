@@ -1,7 +1,6 @@
 plugins {
     id 'java'
-    id 'com.gradleup.shadow' version "8.3.6" // for shadowing
-    id "io.freefair.lombok" version "8.6"
+    id 'com.gradleup.shadow' version "9.4.1" // for shadowing
 }
 
 apply from: rootDir.toString() + '/dependencies.gradle'
@@ -9,8 +8,9 @@ apply from: rootDir.toString() + '/dependencies.gradle'
 group = properties['group']
 version = properties['version']
 
-//java.sourceCompatibility = JavaVersion.VERSION_11
-//java.targetCompatibility = JavaVersion.VERSION_11
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(25))
+}
 
 ext {
     pluginMain = properties['plugin.main'] == 'default' ?
@@ -40,13 +40,13 @@ repositories {
         name = "streamline-essentials"
         url = "https://repo.codemc.org/repository/streamline-essentials/"
     }
-    maven { url "https://jitpack.io" }
+    maven { url = "https://jitpack.io" }
     maven {
         name = "placeholderapi"
         url = "https://repo.extendedclip.com/content/repositories/placeholderapi/"
     }
-    maven { url 'https://repo.papermc.io/repository/maven-snapshots/' }
-    maven { url 'https://repo.papermc.io/repository/maven-public/' }
+    maven { url = 'https://repo.papermc.io/repository/maven-snapshots/' }
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
 }
 
 dependencies {
@@ -61,21 +61,25 @@ dependencies {
     compileOnly(OTHER_PLUGINS)
 }
 
+def pluginName = project.name
+def pluginVersion = project.version.toString()
+def pluginMainClass = project.ext.pluginMain
+
 processResources {
     // Debugging: Print values
     doFirst {
-        println "Version: ${project.version}, Name: ${project.name}, Main: ${project.ext.pluginMain}"
+        println "Version: ${pluginVersion}, Name: ${pluginName}, Main: ${pluginMainClass}"
     }
 
-    inputs.property('name', "${project.name}")
-    inputs.property('version', "${project.version}")
-    inputs.property('main', "${project.ext.pluginMain}")
+    inputs.property('name', pluginName)
+    inputs.property('version', pluginVersion)
+    inputs.property('main', pluginMainClass)
 
     filesMatching('**/plugin.yml') {
         expand (
-                'name': "${project.name}",
-                'version': "${project.version}",
-                'main': "${project.ext.pluginMain}",
+                'name': pluginName,
+                'version': pluginVersion,
+                'main': pluginMainClass,
         )
     }
 }
@@ -89,11 +93,11 @@ shadowJar {
     minimize()
 }
 
-artifacts {
-    archives shadowJar
+tasks.assemble {
+    dependsOn(shadowJar)
 }
 
 wrapper {
-    gradleVersion = '8.9'
+    gradleVersion = '9.2.1'
     distributionType = Wrapper.DistributionType.ALL
 }

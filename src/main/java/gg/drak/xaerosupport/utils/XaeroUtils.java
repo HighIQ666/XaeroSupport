@@ -63,7 +63,7 @@ public class XaeroUtils {
      */
     public static void registerChannel(String channel) {
         Bukkit.getMessenger().registerOutgoingPluginChannel(XaeroSupport.getInstance(), channel);
-        XaeroSupport.getInstance().logInfo("Registered channel: &c" + channel);
+        XaeroSupport.getInstance().logInfo("Registered channel: " + channel);
     }
 
     /**
@@ -72,7 +72,7 @@ public class XaeroUtils {
      */
     public static void unregisterChannel(String channel) {
         Bukkit.getMessenger().unregisterOutgoingPluginChannel(XaeroSupport.getInstance(), channel);
-        XaeroSupport.getInstance().logInfo("Unregistered channel: &c" + channel);
+        XaeroSupport.getInstance().logInfo("Unregistered channel: " + channel);
     }
 
     /**

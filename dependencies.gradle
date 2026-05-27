@@ -5,11 +5,13 @@ ext {
     ]
     ANNO = [
             'gg.drak:BukkitOfUtils:1.16.0',
-            'dev.folia:folia-api:1.21.5-R0.1-SNAPSHOT',
     ]
     COMP_ONLY = [
             'gg.drak:BukkitOfUtils:1.16.0',
-            'dev.folia:folia-api:1.21.5-R0.1-SNAPSHOT',
+            'io.papermc.paper:paper-api:26.1.2.build.66-stable',
+            'net.kyori:adventure-api:5.0.0',
+            'net.kyori:adventure-text-serializer-plain:5.0.0',
+            'net.kyori:adventure-text-minimessage:5.0.0',
     ]
     FILES = [
     ]
